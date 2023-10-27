@@ -44,12 +44,8 @@
 				return ($mod + ($num % $mod)) % $mod;
 			}
 
-			
-
-			
-			
 			//Month Array
-			$monthArray = array("Januari ❄️","Februari 🥶","Mars ✝️⛪️🔥","April 🌺","Maj 🐝","Juni 🇸🇪","Juli 🌞","Augusti 🍎","September 🌦","Oktober 🍁","November 🍂","December ✝️⛪️🎄");
+			$monthArray = array("January ❄️","February 🥶","March ✝️⛪️🔥","April 🌺","May 🐝","June 🇸🇪","July 🌞","August 🍎","September 🌦","October 🍁","November 🍂","December ✝️⛪️🎄");
 			
 			//calculate wanted month and year
 			$wantedYear = date("Y") + floor(((date("m") -1 + $monthFromNow)/12));
@@ -87,6 +83,13 @@
 			$dayDay = date("l",$rawDate);
 			$dayAsNumber = date("d",$rawDate);
 			$currentNumberOfDays = date("z",$rawDate) + 1; 
+
+			if($dayDay == "Monday"){
+				$currentWeek= "Week ".date("W",$rawDate);
+			}
+			else{
+				$currentWeek="";
+			}
 			if($leapCheck==364 && $currentNumberOfDays > 59){
 				$febLeapCheck =1;
 			}
@@ -104,7 +107,7 @@
 			
 			 echo "<tr>
 					<td class='small'>$dayAsNumber</td>
-					<td class='$dayDay'>$dayDay</td>
+					<td class='$dayDay'>$currentWeek $dayDay</td>
 					<td>$currentName</td>
 					<td>$currentNumberOfDays</td>
 					</tr>";
